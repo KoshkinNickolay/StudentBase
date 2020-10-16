@@ -22,15 +22,7 @@ public class App {
             ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM students " +
                     "WHERE firstname='%s' AND lastname='%s';", student.getFirstName(), student.getSecondName()));
             if (resultSet.isBeforeFirst()) {
-                System.out.println("По данному запросу найдено:");
-                System.out.printf("%-20s %-20s %-20s\n", "Id", "Имя", "Фамилия");
-                while (resultSet.next()) {
-                    System.out.printf(
-                            "%-20s %-20s %-20s\n",
-                            resultSet.getString("id"),
-                            resultSet.getString("firstname"),
-                            resultSet.getString("lastname"));
-                }
+                System.out.println("Данный студент есть в БД");
             } else {
                 statement.execute(String.format("INSERT INTO students (firstname, lastname) " +
                         "VALUES ('%s', '%s');", student.getFirstName(), student.getSecondName()));
